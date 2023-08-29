@@ -1,6 +1,15 @@
 import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
+import { pool } from './db.js';
 
 const app = express();
+
+app.get('/ping', async(req, res) => {
+    const [result] = await pool.query('SELECT "pong" AS result');
+    res.json(result[0]);
+});
 
 app.get('/employees', (req, res) => res.send('Getting employees'));
 
