@@ -1,9 +1,9 @@
-import express, { Router } from 'express';
-import dotenv from 'dotenv';
-dotenv.config();
+import express from 'express';
 
 import employeesRoutes from './routes/employes.js';
 import indexRoutes from './routes/index.js';
+
+import { PORT } from './config.js';
 
 const app = express();
 
@@ -18,5 +18,5 @@ app.use((req, res, next) => {
     });
 });
 
-app.listen(3000);
-console.log('Server on port', 3000);
+app.listen(PORT);
+console.log('Server running on port', PORT);
